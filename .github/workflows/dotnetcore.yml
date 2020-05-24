@@ -22,7 +22,7 @@ jobs:
     - name: Build with dotnet
       run: dotnet build src/*.sln --configuration Release --no-restore
     - name: Test with dotnet
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test src/Courier.RestClient.Tests/Courier.RestClient.Tests.csproj --no-restore --verbosity normal
     - name: Pack with dotnet
       run: dotnet pack src/Courier.RestClient/Courier.RestClient.csproj --output packages --configuration Release --version ${{ secrets.BUILD_VERSION }}
     - name: Push with dotnet
