@@ -25,7 +25,7 @@ namespace Courier.Models
         /// 
         /// </summary>
         [JsonProperty(PropertyName = "reference")]
-        public object ReferenceIds { get; set; }
+        public dynamic ReferenceIds { get; set; }
 
     }
 

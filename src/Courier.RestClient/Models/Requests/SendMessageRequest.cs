@@ -42,7 +42,7 @@ namespace Courier.Models.Requests
         /// An object that includes any preferences for the recipient.
         /// </summary>
         [JsonProperty(PropertyName = "preferences")]
-        public object RecipientPreferences { get; set; }
+        public dynamic RecipientPreferences { get; set; }
 
         /// <summary>
         /// An object that includes any data you want to pass to a message template. The data will populate the corresponding 
