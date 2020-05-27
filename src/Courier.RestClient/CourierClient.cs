@@ -47,9 +47,19 @@ namespace Courier
         /// </summary>
         /// <param name="apiKey"></param>
         /// <param name="handler"></param>
-        public CourierClient(string apiKey, HttpMessageHandler handler) : this(apiKey)
+        public CourierClient(string apiKey, HttpMessageHandler handler) : base(handler)
         {
-            HttpHandler = handler;
+            // RWM: https://www.newtonsoft.com/json/help/html/NamingStrategyCamelCase.htm
+            JsonSerializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new CamelCaseNamingStrategy()
+                },
+                NullValueHandling = NullValueHandling.Ignore
+            };
+            AddHeader("Authorization", $"Bearer {apiKey}");
+            BaseUrl = "https://api.trycourier.app/";
         }
 
         #endregion
